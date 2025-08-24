@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 
-export default function Home() {
+export default function Contact() {
   return (
     <div className="px-32 mt-4">
       <form className="grid bg-surface">
