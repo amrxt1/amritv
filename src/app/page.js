@@ -1,21 +1,24 @@
 "use client";
-
+import Container from "@/components/Container";
 import { motion } from "motion/react";
 
 export default function Home() {
   return (
-    <>
-      <div className="h-screen flex justify-center items-center text-text/40">
+    <Container>
+      <div className="text-text/40 flex h-screen items-center justify-center">
         <motion.h1
-          className="text-3xl mb-24"
+          className="mb-24 text-2xl"
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <span className="text-6xl text-primary">amritv[eer&apos;s]</span>
-          .space of the internet
+          <div>
+            <span className="text-primary text-5xl">amritv[eer&apos;s]</span>
+            <span>.space </span>
+          </div>
+          <span>on the internet</span>
         </motion.h1>
       </div>
-    </>
+    </Container>
   );
 }
