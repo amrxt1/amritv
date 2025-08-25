@@ -46,7 +46,7 @@ function Row() {
 
 export default function Stack() {
   return (
-    <Container className="bg-surface/30 mt-24 overflow-clip py-4">
+    <Container className="bg-surface/30 mt-12 overflow-clip py-4">
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
