@@ -122,26 +122,28 @@ const ProjectsRenderer = () => {
       : projects.filter((p) => p.techUsed.includes(selectTech));
 
   return (
-    <Container>
-      <div className="flex w-full justify-around gap-1">
-        {ALL_TECH &&
-          ALL_TECH.map((t) => (
-            <button
-              key={t}
-              onClick={(e) => {
-                e.preventDefault();
-                setTech(t);
-              }}
-            >
-              {t}
-            </button>
-          ))}
+    <Container className={"mt-48"}>
+      <h1 className="text-primary font-serif text-3xl">Projects</h1>
+      <div className="mt-4 flex flex-wrap gap-2">
+        {ALL_TECH.map((t) => (
+          <button
+            key={t}
+            onClick={() => setTech(t)}
+            className={`${selectTech === t ? "text-primary bg-surface rounded-lg px-2" : "text-text/70"}`}
+          >
+            {t}
+          </button>
+        ))}
       </div>
+
       <div className="bg-surface mt-4 rounded-lg p-4">
-        <h1 className="text-primary font-bold">Projects</h1>
-        {filteredProjects.map((p) => {
-          return <ProjectCard key={p.id} project={p} />;
-        })}
+        {filteredProjects.length === 0 ? (
+          <div className="text-text/50 italic">No selected Projects.</div>
+        ) : (
+          filteredProjects.map((p) => {
+            return <ProjectCard key={p.id} project={p} />;
+          })
+        )}
       </div>
     </Container>
   );

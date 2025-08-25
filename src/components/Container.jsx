@@ -1,5 +1,5 @@
-const Container = ({ children }) => {
-  return <section className="px-4">{children}</section>;
+const Container = ({ children, className }) => {
+  return <section className={`px-4 ${className}`}>{children}</section>;
 };
 
 export default Container;

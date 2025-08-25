@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 const Stack = () => {
   return (
-    <Container>
+    <Container className={"mt-24"}>
       <div className="font-mono">S T A C K goes here...</div>
     </Container>
   );
