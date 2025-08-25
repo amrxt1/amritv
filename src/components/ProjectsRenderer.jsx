@@ -19,6 +19,7 @@ const projects = [
     details:
       "Built for a computer architecture course. The CPU supports a subset of ARM instructions and was verified against test benches.",
     repo: "armv7",
+    preview: "https://armv7.vercel.app",
   },
   {
     id: 1,
@@ -47,6 +48,7 @@ const projects = [
     details:
       "Built with React and Tailwind. Integrates with the backend to provide a smooth student collaboration experience.",
     repo: "cchive_frontend",
+    preview: "https://cchive.vercel.app",
   },
   {
     id: 3,
@@ -75,6 +77,7 @@ const projects = [
     details:
       "Built with React and Firebase. Designed for a local fire hall to organize and publish community events.",
     repo: "fire-hall-events",
+    preview: "https://fire-hall-events.vercel.app",
   },
   {
     id: 5,
@@ -89,6 +92,7 @@ const projects = [
     details:
       "MERN stack app connecting customers with moving crews, featuring real-time updates.",
     repo: "junk-removal-demo",
+    preview: "https://junk-removal-demo.vercel.app",
   },
   {
     id: 6,
@@ -131,6 +135,7 @@ const projects = [
     details:
       "Ruby on Rails project mimicking early Facebook core features. Built to practice scalable app design.",
     repo: "project_facebook",
+    preview: "https://project-facebook.fly.dev/",
   },
   {
     id: 9,
@@ -167,14 +172,23 @@ function ProjectCard({ project }) {
         <h1 className="text-primary flex items-center font-serif text-lg font-bold">
           {project.title}
         </h1>
-        <div className="flex items-center justify-end">
+        <div className="flex items-center justify-end gap-2">
           <a
             href={`https://github.com/amrxt1/${project.repo}`}
             target="_blank"
-            className="bg-primary text-background rounded-lg px-2 py-1 font-bold"
+            className="bg-primary shrink-0 rounded-lg p-0.5"
           >
-            View Source
+            <img src="/devicons/github.svg" alt="" className="size-8" />
           </a>
+          {project.preview && (
+            <a
+              href={project.preview}
+              target="_blank"
+              className="bg-primary shrink-0 rounded-lg p-0.5"
+            >
+              <img src="/external-link.svg" alt="" className="size-8" />
+            </a>
+          )}
         </div>
       </div>
       <p className="text-sm">{project.desc}</p>
