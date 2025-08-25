@@ -9,7 +9,7 @@ const projects = [
     id: 0,
     title: "armV7",
     desc: "A lightweight ARMv7 CPU core implemented in Verilog.",
-    img: "/images/projects/armv7.png",
+    img: "/project-images/armv7.png",
     techUsed: ["verilog"],
     features: [
       "Implements instruction fetch, decode, and ALU pipeline",
@@ -18,12 +18,12 @@ const projects = [
     ],
     details:
       "Built for a computer architecture course. The CPU supports a subset of ARM instructions and was verified against test benches.",
+    repo: "armv7",
   },
   {
     id: 1,
     title: "CCHive-Backend",
     desc: "Backend services for a student collaboration platform.",
-    img: "/images/projects/cchive-backend.png",
     techUsed: ["ruby"],
     features: [
       "REST API with authentication",
@@ -32,12 +32,12 @@ const projects = [
     ],
     details:
       "Developed in Ruby on Rails. Provides backend services for the CCHive platform.",
+    repo: "cchive_backend",
   },
   {
     id: 2,
     title: "CCHive-Frontend",
     desc: "Frontend web app for the CCHive project.",
-    img: "/images/projects/cchive-frontend.png",
     techUsed: ["js"],
     features: [
       "Single Page App built with React",
@@ -46,12 +46,12 @@ const projects = [
     ],
     details:
       "Built with React and Tailwind. Integrates with the backend to provide a smooth student collaboration experience.",
+    repo: "cchive_frontend",
   },
   {
     id: 3,
     title: "Assembler",
     desc: "A custom assembler for a teaching CPU architecture.",
-    img: "/images/projects/assembler.png",
     techUsed: ["asm"],
     features: [
       "Parses custom assembly language",
@@ -60,12 +60,12 @@ const projects = [
     ],
     details:
       "Assembler toolchain written for a course CPU simulator, providing human-readable to binary translation.",
+    repo: "armv7/tree/main/asm",
   },
   {
     id: 4,
     title: "Fire Hall Events",
     desc: "Website to manage and display upcoming community events.",
-    img: "/images/projects/firehall.png",
     techUsed: ["js"],
     features: [
       "Interactive event calendar",
@@ -74,12 +74,12 @@ const projects = [
     ],
     details:
       "Built with React and Firebase. Designed for a local fire hall to organize and publish community events.",
+    repo: "fire-hall-events",
   },
   {
     id: 5,
     title: "QuickMove Solutions",
     desc: "Logistics and moving services booking platform.",
-    img: "/images/projects/quickmove.png",
     techUsed: ["js"],
     features: [
       "Booking system for moving services",
@@ -88,12 +88,12 @@ const projects = [
     ],
     details:
       "MERN stack app connecting customers with moving crews, featuring real-time updates.",
+    repo: "junk-removal-demo",
   },
   {
     id: 6,
     title: "shiftBOT",
     desc: "A scheduling assistant bot for shift-based jobs.",
-    img: "/images/projects/shiftbot.png",
     techUsed: ["python"],
     features: [
       "Generates optimal shift rotations",
@@ -102,12 +102,12 @@ const projects = [
     ],
     details:
       "Written in Python with scheduling algorithms to minimize conflicts and ensure fairness.",
+    repo: "shiftBOT",
   },
   {
     id: 7,
     title: "Applications BOT",
     desc: "Discord bot for handling internship applications.",
-    img: "/images/projects/applications-bot.png",
     techUsed: ["python"],
     features: [
       "Collects and validates form submissions",
@@ -116,12 +116,12 @@ const projects = [
     ],
     details:
       "Built with discord.py. Simplified application intake for a student club.",
+    repo: "amazon-jobs-bot",
   },
   {
     id: 8,
     title: "Project: Facebook",
     desc: "Recreation of early Facebook features for learning purposes.",
-    img: "/images/projects/fb-clone.png",
     techUsed: ["ruby"],
     features: [
       "Profiles with friend requests",
@@ -130,12 +130,12 @@ const projects = [
     ],
     details:
       "Ruby on Rails project mimicking early Facebook core features. Built to practice scalable app design.",
+    repo: "project_facebook",
   },
   {
     id: 9,
     title: "CS-120",
     desc: "Collection of course projects for CS-120.",
-    img: "/images/projects/cs120.png",
     techUsed: ["python"],
     features: [
       "Sorting algorithm implementations",
@@ -144,6 +144,7 @@ const projects = [
     ],
     details:
       "Assignments covering core algorithms and data structures, packaged into one repo.",
+    repo: "csci-120",
   },
 ];
 
@@ -163,12 +164,13 @@ function ProjectCard({ project }) {
   return (
     <div className="bg-surface/50 text-text/85 mb-16 space-y-4 rounded-lg p-4">
       <div className="grid grid-cols-2">
-        <h1 className="text-primary flex items-center text-lg font-bold">
+        <h1 className="text-primary flex items-center font-serif text-lg font-bold">
           {project.title}
         </h1>
         <div className="flex items-center justify-end">
           <a
-            href="#"
+            href={`https://github.com/amrxt1/${project.repo}`}
+            target="_blank"
             className="bg-primary text-background rounded-lg px-2 py-1 font-bold"
           >
             View Source
@@ -176,16 +178,22 @@ function ProjectCard({ project }) {
         </div>
       </div>
       <p className="text-sm">{project.desc}</p>
-      <div className="grid grid-cols-2 gap-x-4">
-        <img src="/devicons/git.svg" alt="project-screenshot" />
-        <div className="text-sm">
+      <div>
+        <div className="flex h-full items-center justify-center">
+          <img
+            src={project.img || "/devicons/git.svg"}
+            alt="project-screenshot"
+            className="rounded-lg"
+          />
+        </div>
+        <div className="mt-4 grid grid-cols-5 justify-center gap-x-4 text-sm">
           <div>
             <h3>Tech: </h3>
             <div className="text-text/70 text-xs">
               {project.techUsed.join(", ")}
             </div>
           </div>
-          <div>
+          <div className="col-span-4">
             <h3>Features:</h3>
             <ul className="text-text/70 text-xs">
               {project.features.map((f, i) => (
@@ -209,7 +217,7 @@ const ProjectsRenderer = () => {
 
   return (
     <Container className={"mt-48"}>
-      <h1 className="text-primary font-serif text-3xl">Projects</h1>
+      <h1 className="text-primary font-serif text-3xl font-bold">Projects</h1>
       <div className="mt-4 flex flex-wrap gap-2">
         {ALL_TECH.map((t) => (
           <button
