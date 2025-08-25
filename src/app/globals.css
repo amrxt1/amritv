@@ -3,8 +3,12 @@
 :root {
   --background: #ffffff;
   --text: #171717;
-  --surface: #171717;
-  --primary: #3e1ac2;
+  
+  --surface: #424B54; /*Charcoal*/
+  --primary: #86A397; /*Cambridge Blue*/
+  --accent: #E5BE9E; /*Dessert Sand*/
+  --error: #6E0E0A; /*Blood Red*/
+
 }
 
 @theme inline {

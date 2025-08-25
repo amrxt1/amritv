@@ -129,7 +129,7 @@ const ProjectsRenderer = () => {
           <button
             key={t}
             onClick={() => setTech(t)}
-            className={`${selectTech === t ? "text-primary bg-surface rounded-lg px-2" : "text-text/70"}`}
+            className={`${selectTech === t ? "text-primary bg-surface rounded-lg px-2 font-bold" : "text-text/70"}`}
           >
             {t}
           </button>
