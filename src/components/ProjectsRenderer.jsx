@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/Container";
-import { motion } from "motion/react";
+import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 
 const projects = [
@@ -167,7 +167,13 @@ const ALL_TECH = [
 
 function ProjectCard({ project }) {
   return (
-    <div className="bg-surface/50 text-text/85 mb-16 space-y-4 rounded-lg p-4">
+    <motion.div
+      className="bg-surface/50 text-text/85 mb-16 space-y-4 rounded-lg p-4"
+      initial={{ y: 40, opacity: 0.15 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.4, ease: "easeOut" }}
+      viewport={{ once: true, amount: 0.45 }}
+    >
       <div className="grid grid-cols-2">
         <h1 className="text-primary flex items-center font-serif text-lg font-bold">
           {project.title}
@@ -176,7 +182,7 @@ function ProjectCard({ project }) {
           <a
             href={`https://github.com/amrxt1/${project.repo}`}
             target="_blank"
-            className="bg-primary shrink-0 rounded-lg p-0.5"
+            className="bg-primary aspect-square shrink-0 rounded-lg p-0.5"
           >
             <img src="/devicons/github.svg" alt="" className="size-8" />
           </a>
@@ -217,7 +223,7 @@ function ProjectCard({ project }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
@@ -246,13 +252,31 @@ const ProjectsRenderer = () => {
 
       <div className="border-surface mt-4 rounded-lg border-2 p-4 pt-16">
         {filteredProjects.length === 0 ? (
-          <div className="text-text/50 pb-16 text-center text-xl italic">
-            No projects to show.
-          </div>
+          <AnimatePresence initial={false} mode="popLayout">
+            <motion.div
+              key="empty"
+              layout
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="text-text/50 py-16 text-center mb-16 rounded-lg font-serif text-2xl font-bold italic aspect-square bg-surface"
+            >
+              No projects to show.
+            </motion.div>
+          </AnimatePresence>
         ) : (
-          filteredProjects.map((p) => {
-            return <ProjectCard key={p.id} project={p} />;
-          })
+          <AnimatePresence mode="popLayout">
+            {filteredProjects.map((p) => (
+              <motion.div
+                key={p.id}
+                exit={{ opacity: 0, y: -20, scale: 0.75 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+              >
+                <ProjectCard project={p} />
+              </motion.div>
+            ))}
+          </AnimatePresence>
         )}
       </div>
     </Container>
