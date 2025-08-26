@@ -6,6 +6,9 @@
       "@/styles/*": [
         "styles/*"
       ],
+      "@/data/*": [
+        "data/*"
+      ],
       "@/components/*": [
         "components/*"
       ]

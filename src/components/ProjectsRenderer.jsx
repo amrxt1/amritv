@@ -3,6 +3,7 @@
 import Container from "@/components/Container";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
+import Link from "next/link";
 
 const projects = [
   {
@@ -20,6 +21,7 @@ const projects = [
       "Built for a computer architecture course. The CPU supports a subset of ARM instructions and was verified against test benches.",
     repo: "armv7",
     preview: "https://armv7.vercel.app",
+    more: "armv7"
   },
   {
     id: 1,
@@ -168,7 +170,7 @@ const ALL_TECH = [
 function ProjectCard({ project }) {
   return (
     <motion.div
-      className="bg-surface/50 text-text/85 mb-16 space-y-4 rounded-lg p-4"
+      className="bg-surface/50 text-text/85 mb-24 space-y-4 rounded-lg p-4"
       initial={{ y: 40, opacity: 0.15 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
@@ -179,12 +181,19 @@ function ProjectCard({ project }) {
           {project.title}
         </h1>
         <div className="flex items-center justify-end gap-2">
+          {project.more && (
+            <Link href={`/project/${project.more}`}
+              className="bg-primary shrink-0 rounded-lg p-0.5"
+            >
+              <img src="/book.svg" alt="" className="size-6" />
+            </Link>
+          )}
           <a
             href={`https://github.com/amrxt1/${project.repo}`}
             target="_blank"
             className="bg-primary aspect-square shrink-0 rounded-lg p-0.5"
           >
-            <img src="/devicons/github.svg" alt="" className="size-8" />
+            <img src="/devicons/github.svg" alt="" className="size-6" />
           </a>
           {project.preview && (
             <a
@@ -192,7 +201,7 @@ function ProjectCard({ project }) {
               target="_blank"
               className="bg-primary shrink-0 rounded-lg p-0.5"
             >
-              <img src="/external-link.svg" alt="" className="size-8" />
+              <img src="/external-link.svg" alt="" className="size-6" />
             </a>
           )}
         </div>
@@ -227,7 +236,7 @@ function ProjectCard({ project }) {
   );
 }
 
-const ProjectsRenderer = () => {
+const ProjectsRenderer = ({ margin = false }) => {
   const [selectTech, setTech] = useState("all");
 
   const filteredProjects =
@@ -236,8 +245,10 @@ const ProjectsRenderer = () => {
       : projects.filter((p) => p.techUsed.includes(selectTech));
 
   return (
-    <Container className={"mt-48"}>
-      <h1 className="text-primary font-serif text-3xl font-bold">Projects</h1>
+    <Container className={`${margin ? "mt-48" : "mt-4"}`}>
+      <Link href={"/project"}>
+        <h1 className="text-primary font-serif text-3xl font-bold">Projects</h1>
+      </Link>
       <div className="mt-4 flex flex-wrap gap-2">
         {ALL_TECH.map((t) => (
           <button
@@ -250,7 +261,7 @@ const ProjectsRenderer = () => {
         ))}
       </div>
 
-      <div className="border-surface mt-4 rounded-lg border-2 p-4 pt-16">
+      <div className="mt-6 rounded-lg">
         {filteredProjects.length === 0 ? (
           <AnimatePresence initial={false} mode="popLayout">
             <motion.div
