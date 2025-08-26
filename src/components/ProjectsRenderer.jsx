@@ -172,7 +172,7 @@ const ALL_TECH = [
 function ProjectCard({ project, minimal }) {
   return (
     <motion.div
-      className="bg-surface/50 text-text/85 mb-24 rounded-lg p-4"
+      className="bg-surface/20 text-text/85 shadow-surface mb-24 overflow-clip rounded-lg border border-white/30 p-4 shadow-inner"
       initial={{ y: 40, opacity: 0.15 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
