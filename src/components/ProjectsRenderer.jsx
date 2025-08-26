@@ -258,9 +258,18 @@ const ProjectsRenderer = ({ margin = false, minimal = false }) => {
           <button
             key={t}
             onClick={() => setTech(t)}
-            className={`${selectTech === t ? "text-primary bg-surface rounded-lg px-2 font-bold" : "text-text/70"}`}
+            className={`${selectTech === t ? "text-primary bg-surface flex items-center rounded-lg px-2 font-bold" : "text-text/70"}`}
           >
-            {t}
+            <span>{t}</span>
+            {selectTech === t && (
+              <span className="bg-accent text-background ml-1 rounded-full px-0.5 text-xs">
+                (
+                {filteredProjects.length === 0
+                  ? "none"
+                  : filteredProjects.length}
+                )
+              </span>
+            )}
           </button>
         ))}
       </div>
