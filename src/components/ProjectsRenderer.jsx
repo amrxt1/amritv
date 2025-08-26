@@ -7,7 +7,23 @@ import Link from "next/link";
 
 const projects = [
   {
-    id: 0,
+    id: 2,
+    title: "CCHive-Frontend",
+    desc: "Frontend web app for the CCHive project.",
+    techUsed: ["js"],
+    features: [
+      "Single Page App built with React",
+      "Responsive project dashboards",
+      "Real-time messaging UI",
+    ],
+    details:
+      "Built with React and Tailwind. Integrates with the backend to provide a smooth student collaboration experience.",
+    repo: "cchive_frontend",
+    preview: "https://cchive.vercel.app",
+  },
+
+  {
+    id: 1,
     title: "armV7",
     desc: "A lightweight ARMv7 CPU core implemented in Verilog.",
     img: "/project-images/armv7.png",
@@ -24,7 +40,7 @@ const projects = [
     more: "armv7"
   },
   {
-    id: 1,
+    id: 0,
     title: "CCHive-Backend",
     desc: "Backend services for a student collaboration platform.",
     techUsed: ["ruby"],
@@ -36,21 +52,6 @@ const projects = [
     details:
       "Developed in Ruby on Rails. Provides backend services for the CCHive platform.",
     repo: "cchive_backend",
-  },
-  {
-    id: 2,
-    title: "CCHive-Frontend",
-    desc: "Frontend web app for the CCHive project.",
-    techUsed: ["js"],
-    features: [
-      "Single Page App built with React",
-      "Responsive project dashboards",
-      "Real-time messaging UI",
-    ],
-    details:
-      "Built with React and Tailwind. Integrates with the backend to provide a smooth student collaboration experience.",
-    repo: "cchive_frontend",
-    preview: "https://cchive.vercel.app",
   },
   {
     id: 3,

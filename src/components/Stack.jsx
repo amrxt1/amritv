@@ -57,6 +57,6 @@ export default function Stack() {
           <Row />
         </div>
       </motion.div>
-    </Container>
+    </Container >
   );
 }

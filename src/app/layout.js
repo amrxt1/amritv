@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <link rel="icon" href="icon.svg" />
+      <link rel="icon" href="/icon.svg" />
       <body className={`${lora.variable} ${archivo.variable} antialiased`}>
         {children}
       </body>
