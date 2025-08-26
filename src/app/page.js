@@ -8,7 +8,7 @@ export default function Home() {
     <>
       <Hero />
       <Stack />
-      <ProjectsRenderer margin />
+      <ProjectsRenderer margin minimal />
       <Footer />
     </>
   );

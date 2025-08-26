@@ -1,11 +1,29 @@
 "use client";
 
 import Container from "@/components/Container";
+import Badge from "@/components/Badge";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
 import Link from "next/link";
 
 const projects = [
+  {
+    id: 1,
+    title: "armV7",
+    desc: "A lightweight ARMv7 CPU core implemented in Verilog.",
+    img: "/project-images/armv7.png",
+    techUsed: ["verilog"],
+    features: [
+      "Implements instruction fetch, decode, and ALU pipeline",
+      "Supports a subset of ARM instructions",
+      "Simulated in ModelSim",
+    ],
+    details:
+      "Built for a computer architecture course. The CPU supports a subset of ARM instructions and was verified against test benches.",
+    repo: "armv7",
+    preview: "https://armv7.vercel.app",
+    more: "armv7",
+  },
   {
     id: 2,
     title: "CCHive-Frontend",
@@ -22,23 +40,6 @@ const projects = [
     preview: "https://cchive.vercel.app",
   },
 
-  {
-    id: 1,
-    title: "armV7",
-    desc: "A lightweight ARMv7 CPU core implemented in Verilog.",
-    img: "/project-images/armv7.png",
-    techUsed: ["verilog"],
-    features: [
-      "Implements instruction fetch, decode, and ALU pipeline",
-      "Supports a subset of ARM instructions",
-      "Simulated in ModelSim",
-    ],
-    details:
-      "Built for a computer architecture course. The CPU supports a subset of ARM instructions and was verified against test benches.",
-    repo: "armv7",
-    preview: "https://armv7.vercel.app",
-    more: "armv7"
-  },
   {
     id: 0,
     title: "CCHive-Backend",
@@ -168,22 +169,23 @@ const ALL_TECH = [
   "misc",
 ];
 
-function ProjectCard({ project }) {
+function ProjectCard({ project, minimal }) {
   return (
     <motion.div
-      className="bg-surface/50 text-text/85 mb-24 space-y-4 rounded-lg p-4"
+      className="bg-surface/50 text-text/85 mb-24 rounded-lg p-4"
       initial={{ y: 40, opacity: 0.15 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.4, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.45 }}
     >
-      <div className="grid grid-cols-2">
-        <h1 className="text-primary flex items-center font-serif text-lg font-bold">
+      <div className="flex">
+        <h1 className="text-primary flex flex-1 items-center font-serif text-xl font-bold">
           {project.title}
         </h1>
         <div className="flex items-center justify-end gap-2">
           {project.more && (
-            <Link href={`/project/${project.more}`}
+            <Link
+              href={`/project/${project.more}`}
               className="bg-primary shrink-0 rounded-lg p-0.5"
             >
               <img src="/book.svg" alt="" className="size-6" />
@@ -207,23 +209,24 @@ function ProjectCard({ project }) {
           )}
         </div>
       </div>
-      <p className="text-sm">{project.desc}</p>
-      <div>
-        <div className="flex h-full items-center justify-center">
-          <img
-            src={project.img || "/devicons/git.svg"}
-            alt="project-screenshot"
-            className="rounded-lg"
-          />
-        </div>
-        <div className="mt-4 grid grid-cols-5 justify-center gap-x-4 text-sm">
+      <p className="mt-1 text-sm">{project.desc}</p>
+      <div className="mt-4 flex aspect-square h-full items-center justify-center overflow-clip rounded-lg">
+        <img
+          src={project.img || "/devicons/git.svg"}
+          alt="project-screenshot"
+          className="h-full w-full object-cover object-top"
+        />
+      </div>
+      {!minimal && (
+        <div className="mt-4 grid grid-cols-1 justify-center gap-x-4 text-sm">
           <div>
-            <h3>Tech: </h3>
-            <div className="text-text/70 text-xs">
-              {project.techUsed.join(", ")}
-            </div>
+            <h3>
+              {project.techUsed.map((t, i) => {
+                return <Badge key={i}>{t}</Badge>;
+              })}
+            </h3>
           </div>
-          <div className="col-span-4">
+          <div className="col-span-4 mt-2">
             <h3>Features:</h3>
             <ul className="text-text/70 text-xs">
               {project.features.map((f, i) => (
@@ -232,12 +235,12 @@ function ProjectCard({ project }) {
             </ul>
           </div>
         </div>
-      </div>
+      )}
     </motion.div>
   );
 }
 
-const ProjectsRenderer = ({ margin = false }) => {
+const ProjectsRenderer = ({ margin = false, minimal = false }) => {
   const [selectTech, setTech] = useState("all");
 
   const filteredProjects =
@@ -272,7 +275,7 @@ const ProjectsRenderer = ({ margin = false }) => {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.2, ease: "easeOut" }}
-              className="text-text/50 py-16 text-center mb-16 rounded-lg font-serif text-2xl font-bold italic aspect-square bg-surface"
+              className="text-text/50 bg-surface mb-16 aspect-square rounded-lg py-16 text-center font-serif text-2xl font-bold italic"
             >
               No projects to show.
             </motion.div>
@@ -285,7 +288,7 @@ const ProjectsRenderer = ({ margin = false }) => {
                 exit={{ opacity: 0, y: -20, scale: 0.75 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                <ProjectCard project={p} />
+                <ProjectCard project={p} minimal={minimal} />
               </motion.div>
             ))}
           </AnimatePresence>
