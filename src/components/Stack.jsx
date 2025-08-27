@@ -22,7 +22,7 @@ const logos = [
 ];
 
 function Row() {
-  const DURATION = 17;
+  const DURATION = 25;
 
   return (
     <motion.div
@@ -46,17 +46,20 @@ function Row() {
 
 export default function Stack() {
   return (
-    <Container className="bg-surface/30 mt-12 overflow-clip py-4">
-      <motion.div
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-      >
-        <div className="flex gap-6">
-          <Row />
-          <Row />
-        </div>
-      </motion.div>
-    </Container >
+    <Container className="overflow-clip py-12">
+      <div className="bg-accent/20 py-4 [mask:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
+        <motion.div
+          animate={{ opacity: 1 }}
+          initial={{ opacity: 0 }}
+          transition={{ delay: 0.5, duration: 0.8 }}
+        >
+          <div className="flex gap-6">
+            <Row />
+            <Row />
+            <Row />
+          </div>
+        </motion.div>
+      </div>
+    </Container>
   );
 }

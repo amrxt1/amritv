@@ -6,9 +6,11 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Stack />
-      <ProjectsRenderer margin minimal />
+      <div className="bg-primary/10 h-screen">
+        <Hero />
+        <Stack />
+      </div>
+      <ProjectsRenderer minimal />
       <Footer />
     </>
   );
