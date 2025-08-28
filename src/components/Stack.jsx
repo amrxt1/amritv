@@ -27,7 +27,7 @@ function Row() {
   return (
     <motion.div
       aria-hidden="true"
-      className="flex shrink-0 items-center gap-6"
+      className="flex shrink-0 items-center gap-6 md:gap-8 lg:gap-12"
       style={{ minWidth: "100%" }}
       animate={{ x: ["0%", "-100%"] }}
       transition={{
@@ -53,7 +53,7 @@ export default function Stack() {
           initial={{ opacity: 0 }}
           transition={{ delay: 0.5, duration: 0.8 }}
         >
-          <div className="flex gap-6">
+          <div className="flex gap-6 md:gap-12">
             <Row />
             <Row />
             <Row />
