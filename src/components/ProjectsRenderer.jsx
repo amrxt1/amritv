@@ -172,15 +172,23 @@ const ALL_TECH = [
 function ProjectCard({ project, minimal }) {
   return (
     <motion.div
-      className="bg-surface/20 text-text/85 shadow-surface mb-24 overflow-clip rounded-lg border border-white/30 p-4 shadow-inner"
+      className="bg-surface/20 text-text/85 mb-24 overflow-clip rounded-lg border border-white/30 p-4 shadow-inner"
       initial={{ y: 40, opacity: 0.15 }}
       whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
       viewport={{ once: true, amount: 0.45 }}
     >
       <div className="flex">
         <h1 className="text-primary flex flex-1 items-center font-serif text-xl font-bold">
-          {project.title}
+          <Link
+            href={
+              project.more
+                ? `/project/${project.more}`
+                : project.preview || `https://github.com/amrxt1/${project.repo}`
+            }
+          >
+            {project.title}
+          </Link>
         </h1>
         <div className="flex items-center justify-end gap-2">
           {project.more && (
@@ -211,11 +219,19 @@ function ProjectCard({ project, minimal }) {
       </div>
       <p className="mt-1 text-sm">{project.desc}</p>
       <div className="mt-4 flex aspect-square h-full items-center justify-center overflow-clip rounded-lg">
-        <img
-          src={project.img || "/devicons/git.svg"}
-          alt="project-screenshot"
+        <Link
+          href={
+            project.more
+              ? `/project/${project.more}`
+              : project.preview || `https://github.com/amrxt1/${project.repo}`
+          }
           className="h-full w-full object-cover object-top"
-        />
+        >
+          <img
+            src={project.img || "/devicons/git.svg"}
+            alt="project-screenshot"
+          />
+        </Link>
       </div>
       {!minimal && (
         <div className="mt-4 grid grid-cols-1 justify-center gap-x-4 text-sm">
