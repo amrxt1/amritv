@@ -6,7 +6,7 @@ import { motion } from "motion/react";
 export default function Hero() {
   return (
     <Container>
-      <div className="text-text/50 flex h-[70vh] flex-col justify-center gap-4 font-serif">
+      <div className="text-text/90 flex h-[70vh] flex-col justify-center gap-4 font-serif">
         <motion.h1
           className="text-2xl"
           initial={{ opacity: 0, y: 10 }}

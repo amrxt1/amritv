@@ -22,12 +22,11 @@ const navLinks = [
 
 export default function Header() {
   const path = usePathname();
-  console.log(path);
 
   return (
     <>
       <Container className="fixed top-0 z-50 w-full py-3">
-        <div className="absolute inset-0 -z-10 bg-white/4 backdrop-blur-[8px] [mask:linear-gradient(to_top,transparent,black)]" />{" "}
+        <div className="absolute inset-0 -z-10 backdrop-blur-[8px] [mask:linear-gradient(to_top,transparent,black)]" />{" "}
         <nav className="flex justify-center">
           <div className="text-text/70 shadow-surface flex min-w-[40%] justify-center gap-4 rounded-full border border-white/30 bg-white/5 px-8 py-1 shadow-inner backdrop-blur-[3px]">
             {navLinks.map((l, i) => (
