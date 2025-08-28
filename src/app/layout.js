@@ -2,6 +2,8 @@ import "./globals.css";
 import { Lora } from "next/font/google";
 import { Archivo } from "next/font/google";
 
+import Header from "@/components/Header";
+
 export const lora = Lora({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
@@ -24,6 +26,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <link rel="icon" href="/icon.svg" />
       <body className={`${lora.variable} ${archivo.variable} antialiased`}>
+        <Header />
         {children}
       </body>
     </html>

@@ -297,7 +297,7 @@ const ProjectsRenderer = ({ margin = false, minimal = false }) => {
       : projects.filter((p) => p.techUsed.includes(selectTech));
 
   return (
-    <Container className={`${margin ? "mt-48" : "mt-4"}`}>
+    <Container className={`${margin ? "mt-24" : "mt-4"}`}>
       <Link href={"/project"}>
         <h1 className="text-primary font-serif text-3xl font-bold">Projects</h1>
       </Link>
