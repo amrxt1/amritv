@@ -60,7 +60,16 @@ function ProjectCard({ project, minimal, headingOnly }) {
         transition={{ duration: 0.6, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.45 }}
       >
-        <div className="flex">
+        <div className="flex aspect-square items-center justify-center overflow-clip rounded-lg">
+          <Link href={`/project/${project.slug}`} className="h-full w-full">
+            <img
+              src={imgThumb}
+              alt="project-screenshot"
+              className="h-full w-full object-cover object-center"
+            />
+          </Link>
+        </div>
+        <div className="mt-4 flex">
           <h1 className="text-primary flex flex-1 items-center font-serif text-xl font-bold">
             <Link href={`/project/${project.slug}`}>{project.title}</Link>
           </h1>
@@ -92,17 +101,9 @@ function ProjectCard({ project, minimal, headingOnly }) {
           </div>
         </div>
         <p className="mt-1 text-sm">{project.desc}</p>
-        <div className="mt-4 flex aspect-square items-center justify-center overflow-clip rounded-lg">
-          <Link href={`/project/${project.slug}`} className="h-full w-full">
-            <img
-              src={imgThumb}
-              alt="project-screenshot"
-              className="h-full w-full object-cover object-center"
-            />
-          </Link>
-        </div>
+
         {!minimal && (
-          <div className="mt-4 grid grid-cols-1 justify-center gap-x-4 text-sm">
+          <div className="mt-2 grid grid-cols-1 justify-center gap-x-4 text-sm">
             <div>
               <h3>
                 {project.techUsed.map((t, i) => {
