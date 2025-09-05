@@ -38,7 +38,7 @@ export default function Project() {
       {images.length ? (
         <div className="mt-4">
           {images.map((img, i) => (
-            <img src={img} key={i} className="rounded-lg" />
+            <img src={img} key={i} className="max-h-[500px] rounded-lg" />
           ))}
         </div>
       ) : (

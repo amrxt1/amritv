@@ -7,18 +7,6 @@ import { useState } from "react";
 import Link from "next/link";
 import projectsData from "@/data/projectsData";
 
-const ALL_TECH = [
-  "all",
-  "verilog",
-  "asm",
-  "c",
-  "cpp",
-  "ruby",
-  "js",
-  "python",
-  "misc",
-];
-
 function ProjectCard({ project, minimal, headingOnly }) {
   const imgThumb = project.images ? project.images[0] : "/devicons/git.svg";
 
@@ -127,6 +115,10 @@ function ProjectCard({ project, minimal, headingOnly }) {
 }
 
 const ProjectsRenderer = ({ margin = false, minimal = false }) => {
+  const totalTech = projectsData.map((p) => p.techUsed).flat();
+  const ALL_TECH = ["all", ...new Set(totalTech)].sort();
+
+  console.log(ALL_TECH);
   const [selectTech, setTech] = useState("all");
 
   const filteredProjects =
@@ -144,11 +136,11 @@ const ProjectsRenderer = ({ margin = false, minimal = false }) => {
           <button
             key={t}
             onClick={() => setTech(t)}
-            className={`${selectTech === t ? "text-primary bg-surface flex items-center rounded-lg px-2 font-bold" : "text-text/70"}`}
+            className={`${selectTech === t ? "text-primary bg-surface flex items-center rounded-lg px-2" : "text-text/70"}`}
           >
             <span>{t}</span>
             {selectTech === t && (
-              <span className="bg-accent text-background ml-1 rounded-full px-1 text-xs">
+              <span className="bg-accent text-background ml-1 rounded-full px-1 text-xs font-bold">
                 {filteredProjects.length === 0
                   ? "none"
                   : filteredProjects.length}

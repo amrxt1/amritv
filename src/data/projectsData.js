@@ -19,9 +19,10 @@ const projectsData = [
   },
   {
     id: 2,
-    slug: "cchive-f",
+    slug: "cchive",
     title: "CCHive-Frontend",
     desc: "Frontend web app for the CCHive project.",
+    images: ["/project-images/cchive/join.png"],
     techUsed: ["js"],
     features: [
       "Single Page App built with React",
@@ -33,28 +34,13 @@ const projectsData = [
     repo: "cchive_frontend",
     preview: "https://cchive.vercel.app",
   },
-
-  {
-    id: 0,
-    slug: "cchive-b",
-    title: "CCHive-Backend",
-    desc: "Backend services for a student collaboration platform.",
-    techUsed: ["ruby"],
-    features: [
-      "REST API with authentication",
-      "PostgreSQL persistence",
-      "Messaging and collaboration endpoints",
-    ],
-    details:
-      "Developed in Ruby on Rails. Provides backend services for the CCHive platform.",
-    repo: "cchive_backend",
-  },
   {
     id: 3,
     slug: "assembler",
     title: "Assembler",
     desc: "A custom assembler for a teaching CPU architecture.",
     techUsed: ["asm"],
+    images: ["/project-images/assembler/assembler.png"],
     features: [
       "Parses custom assembly language",
       "Supports labels and pseudo-ops",
@@ -70,6 +56,7 @@ const projectsData = [
     title: "Fire Hall Events",
     desc: "Website to manage and display upcoming community events.",
     techUsed: ["js"],
+    images: ["/project-images/fire-hall-events/hero.png"],
     features: [
       "Interactive event calendar",
       "RSVP system",
@@ -86,6 +73,7 @@ const projectsData = [
     title: "QuickMove Solutions",
     desc: "Logistics and moving services booking platform.",
     techUsed: ["js"],
+    images: ["/project-images/quickmove/hero.png"],
     features: [
       "Booking system for moving services",
       "Cost estimation calculator",
@@ -102,6 +90,7 @@ const projectsData = [
     title: "shiftBOT",
     desc: "A scheduling assistant bot for shift-based jobs.",
     techUsed: ["python"],
+    images: ["/project-images/shiftbot/demo.png"],
     features: [
       "Generates optimal shift rotations",
       "Conflict resolution algorithm",
