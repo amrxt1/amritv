@@ -20,6 +20,8 @@ const ALL_TECH = [
 ];
 
 function ProjectCard({ project, minimal, headingOnly }) {
+  const imgThumb = project.images ? project.images[0] : "/devicons/git.svg";
+
   if (headingOnly)
     return (
       <motion.div
@@ -91,17 +93,11 @@ function ProjectCard({ project, minimal, headingOnly }) {
         </div>
         <p className="mt-1 text-sm">{project.desc}</p>
         <div className="mt-4 flex aspect-square items-center justify-center overflow-clip rounded-lg">
-          <Link
-            href={
-              project.more
-                ? `/project/${project.more}`
-                : project.preview || `https://github.com/amrxt1/${project.repo}`
-            }
-            className="h-full w-full object-cover object-top"
-          >
+          <Link href={`/project/${project.slug}`} className="h-full w-full">
             <img
-              src={project.img || "/devicons/git.svg"}
+              src={imgThumb}
               alt="project-screenshot"
+              className="h-full w-full object-cover object-center"
             />
           </Link>
         </div>

@@ -1,14 +1,13 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --text: #171717;
-  
-  --surface: #424B54; /*Charcoal*/
-  --primary: #86A397; /*Cambridge Blue*/
-  --accent: #E5BE9E; /*Dessert Sand*/
-  --error: #6E0E0A; /*Blood Red*/
+  --background: #020617;
+  --text: #f8fafc;
 
+  --surface: #334155;
+  --primary: #60a5fa;
+  --accent: #fbbf24;
+  --error: #ef4444;
 }
 
 @theme inline {
@@ -25,17 +24,13 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --text: #ededed;
+    --background: #020617;
+    --text: #f8fafc;
 
-
-    /* colors from coolors.co */
-    --surface: #424B54; /*Charcoal*/
-    --primary: #86A397; /*Cambridge Blue*/
-    --accent: #E5BE9E; /*Dessert Sand*/
-    --error: #6E0E0A; /*Blood Red*/
-
-    --temp: #ECA400; /*harvest gold*/
+    --surface: #334155;
+    --primary: #60a5fa;
+    --accent: #fbbf24;
+    --error: #ef4444;
   }
 }
 
