@@ -118,7 +118,6 @@ const ProjectsRenderer = ({ margin = false, minimal = false }) => {
   const totalTech = projectsData.map((p) => p.techUsed).flat();
   const ALL_TECH = ["all", ...new Set(totalTech)].sort();
 
-  console.log(ALL_TECH);
   const [selectTech, setTech] = useState("all");
 
   const filteredProjects =
