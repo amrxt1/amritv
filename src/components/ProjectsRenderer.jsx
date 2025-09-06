@@ -7,49 +7,30 @@ import { useState } from "react";
 import Link from "next/link";
 import projectsData from "@/data/projectsData";
 
-function ProjectCard({ project, minimal, headingOnly }) {
+function ProjectCard({ project, minimal }) {
   const imgThumb = project.images ? project.images[0] : "/devicons/git.svg";
-
-  if (headingOnly)
-    return (
-      <motion.div
-        exit={{ opacity: 0, y: -20, scale: 0.75 }}
-        transition={{ duration: 0.2, ease: "easeOut" }}
-        whileHover={{ scale: 1.01 }}
-        className="mb-24"
-        layout
-      >
-        <motion.div
-          className="bg-surface/20 text-text/85 aspect-square h-full overflow-clip rounded-lg border border-white/30 p-4 shadow-inner md:p-6 lg:p-8"
-          initial={{ y: 40, opacity: 0.15 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.45 }}
-        >
-          <h1 className="text-primary items-center text-center font-serif text-xl font-bold">
-            {project.title}
-          </h1>
-        </motion.div>
-      </motion.div>
-    );
 
   return (
     <motion.div
-      exit={{ opacity: 0, y: -20, scale: 0.75 }}
-      transition={{ duration: 0.2, ease: "easeOut" }}
+      initial={false}
+      exit={{ opacity: 0, y: 40 }}
+      transition={{ duration: 0.25, ease: "easeOut" }}
       whileHover={{ scale: 1.01 }}
-      className="mb-24"
+      className="mb-36"
       layout
     >
       <motion.div
         className="bg-surface/20 text-text/85 h-full overflow-clip rounded-lg border border-white/30 p-4 shadow-inner md:p-6 lg:p-8"
         initial={{ y: 40, opacity: 0.15 }}
         whileInView={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         viewport={{ once: true, amount: 0.45 }}
       >
         <div className="flex aspect-square items-center justify-center overflow-clip rounded-lg">
-          <Link href={`/project/${project.slug}`} className="h-full w-full">
+          <Link
+            href={`/project/${project.slug}`}
+            className="relative h-full w-full"
+          >
             <img
               src={imgThumb}
               alt="project-screenshot"
@@ -88,7 +69,7 @@ function ProjectCard({ project, minimal, headingOnly }) {
             )}
           </div>
         </div>
-        <p className="mt-1 text-sm">{project.desc}</p>
+        <p className="text-text/80 mt-1 text-sm md:text-base">{project.desc}</p>
 
         {!minimal && (
           <div className="mt-2 grid grid-cols-1 justify-center gap-x-4 text-sm">
@@ -101,7 +82,7 @@ function ProjectCard({ project, minimal, headingOnly }) {
             </div>
             <div className="col-span-4 mt-2">
               <h3>Features:</h3>
-              <ul className="text-text/70 text-xs">
+              <ul className="text-text/70 text-xs md:text-sm">
                 {project.features.map((f, i) => (
                   <li key={i}>{f}</li>
                 ))}
@@ -130,12 +111,12 @@ const ProjectsRenderer = ({ margin = false, minimal = false }) => {
       <Link href={"/project"}>
         <h1 className="text-primary font-serif text-3xl font-bold">Projects</h1>
       </Link>
-      <div className="mt-4 flex flex-wrap gap-2">
+      <div className="mt-4 mb-16 flex flex-wrap gap-3">
         {ALL_TECH.map((t) => (
           <button
             key={t}
             onClick={() => setTech(t)}
-            className={`${selectTech === t ? "text-primary bg-surface flex items-center rounded-lg px-2" : "text-text/70"}`}
+            className={`cursor-pointer rounded-lg px-2 ${selectTech === t ? "text-primary bg-surface flex items-center" : "text-text border-surface border"}`}
           >
             <span>{t}</span>
             {selectTech === t && (

@@ -6,11 +6,11 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <div className="bg-primary/10 h-screen min-h-[500px]">
+      <div className="flex h-screen min-h-[500px] flex-col justify-center">
         <Hero />
         <Stack />
       </div>
-      <ProjectsRenderer minimal />
+      <ProjectsRenderer minimal margin />
       <Footer />
     </>
   );

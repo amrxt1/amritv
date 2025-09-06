@@ -18,7 +18,8 @@ export const archivo = Archivo({
 
 export const metadata = {
   title: "amrit's portfolio",
-  description: "amrit's portfolio page",
+  description:
+    "Amritveer Singh's portfolio page. Computer Science. Columbia College. CCHive.",
 };
 
 export default function RootLayout({ children }) {

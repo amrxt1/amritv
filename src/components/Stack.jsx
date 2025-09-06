@@ -46,8 +46,8 @@ function Row() {
 
 export default function Stack() {
   return (
-    <Container className="overflow-clip py-12">
-      <div className="bg-accent/20 py-4 [mask:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
+    <Container className="overflow-clip pb-16">
+      <div className="bg-accent/80 py-4 [mask:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]">
         <motion.div
           animate={{ opacity: 1 }}
           initial={{ opacity: 0 }}
