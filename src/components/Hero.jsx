@@ -2,6 +2,7 @@
 
 import Container from "@/components/Container";
 import { motion } from "motion/react";
+import Typewriter from "@/components/Typewriter";
 
 export default function Hero() {
   return (
@@ -25,7 +26,12 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.5, ease: "easeOut" }}
         >
-          I hex bits into cpu(s) and webapps.
+          I hex bits into{" "}
+          <Typewriter
+            text="idk what but smth ig"
+            className="text-primary"
+            speed={200}
+          />
         </motion.div>
       </div>
     </Container>
